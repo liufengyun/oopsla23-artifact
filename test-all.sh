@@ -12,7 +12,7 @@ sbt "scala3-compiler-bootstrapped/compile"
 for snippet in ./code-snippets/*; do
   filename=${snippet##*/}
   log="$log_dir/${filename%.scala}.log"
-  sbt "scalac -Ysafe-init-global -Wconf:msg=(Cyclic\sinitialization)|(Reading\smutable\sstate\sof)|(Access\suninitialized\sfield) $snippet" 2>&1 | tee "$log"
+  sbt "scalac -Ysafe-init-global -Wconf:msg=(Cyclic\sinitialization)|(Reading\smutable\sstate\sof)|(Access\suninitialized\sfield):w $snippet" 2>&1 | tee "$log"
 done
 
 report="$CWD/report.csv"
