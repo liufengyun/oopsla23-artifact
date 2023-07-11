@@ -1,9 +1,14 @@
 # Use the official image as a parent image.
 FROM lampepfl/dotty:2023-06-21-2
 
-
 WORKDIR /home/
 
-RUN git clone -b main --depth 10 --recurse-submodules https://github.com/lampepfl/dotty.git
+COPY . .
+
+RUN git clone -b oopsla23-patched --depth 10 https://github.com/q-ata/dotty.git
+
+RUN mv ./code-snippets ./dotty/code-snippets
+
+RUN mv ./test-all.sh ./dotty/test-all.sh
 
 RUN cd dotty && sbt compile

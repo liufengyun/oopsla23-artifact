@@ -1,5 +1,0 @@
-tests/init/neg/mutable-read5.scala
-tests/init/neg/mutable-read8.scala
-tests/init/neg/mutable-read6.scala
-tests/init/neg/mutable-read7.scala
-tests/init/neg/partial-ordering.scala
