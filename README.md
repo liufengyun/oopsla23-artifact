@@ -56,13 +56,12 @@ The reviewer is invited to play with other examples in the `/home/dotty/tests/in
 ## Verify Code Snippets in the Paper
 
 All code snippets from the paper are located in `/home/dotty/code-snippets`.
-The file name of a snippet has the form `2.3-a-neg.scala`, which can be read as follows:
+The file name of a snippet has the form `2.3-1-neg.scala`, which can be read as follows:
 
 - `2.3` means that the snippet comes from **Section 2.3** of the paper.
-- `a` tells that it is the **1st** snippet in the corresponding section.
+- `1` tells that it is the **1st** snippet in the corresponding section.
 - `neg` indicates that the snippet is expected to be **rejected** by the checker with warnings.
 
-Correspondingly, `b` and `c` are used to refer to the **2nd** and **3rd** code snippets in the paper respectively, and so on.
 The suffix `pos` indicates that the snippet is expected to **pass** the checker with no warnings.
 
 We can check a code snippet as follows:
