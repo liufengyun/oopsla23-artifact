@@ -1,6 +1,8 @@
 # Use the official image as a parent image.
 FROM lampepfl/dotty:2023-06-21-2
 
+RUN apt-get install -y csvtool
+
 WORKDIR /home/
 
 COPY . .

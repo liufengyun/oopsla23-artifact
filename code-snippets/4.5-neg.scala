@@ -1,16 +1,16 @@
-import reflect.Selectable.reflectiveSelectable
+abstract class Foo {
+  def foo(): Int
+}
 
-class C(var x: Int) {
+class C(var x: Int) extends Foo {
   def foo(): Int = 20
 }
 
-class D(var y: Int) {
+class D(var y: Int) extends Foo {
   def foo(): Int = A.m
 }
 
-class Box(var value: {
-  def foo(): Int
-})
+class Box(var value: Foo)
 
 object A:
   val box1: Box = new Box(new C(5))

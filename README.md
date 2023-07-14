@@ -80,7 +80,7 @@ All snippets can be run automatically with the following command while in the `/
 ```
 $ ./test-all.sh
 ```
-The script will place results in `/home/dotty/report.csv`. The meanings of each column are as follows:
+The script will print the results to console as a table and also place results in `/home/dotty/report.csv`. The meanings of each column are as follows:
 - **Snippet Name:** The name of the snippet.
 - **Expected:** Will be `warning` if the test should produce initialization warnings, and `no warning` if the test should pass the checker.
 - **Actual:** Will be `warning` if the checker produced warnings on this test, and `no warning` if the it did not.

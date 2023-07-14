@@ -43,3 +43,5 @@ for logfile in $log_dir/*; do
     fi
   fi
 done
+
+csvtool readable "$report"
