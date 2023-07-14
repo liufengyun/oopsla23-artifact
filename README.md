@@ -6,7 +6,7 @@ The artifact includes an implementation of the global object initialization chec
 
 - The code snippets in the paper are either rejected by the checker with warnings or pass the checker with no warnings as expected.
 - The Scala open issues mentioned in Appendix D is fixed.
-- The case study in section 6 can be reproduced.
+- The case study in Section 6 can be reproduced.
 
 ## Getting Started
 
@@ -84,7 +84,7 @@ The meanings of each column are as follows:
 
 The Status column is expected to be `pass` for all rows.
 
-## Verify Checker Fixes Open Scala Issues
+## Verify Checker Fixes Open Scala Issues (Appendix D)
 
 In Appendix D of the paper, we mentioned the following Scala issues:
 
@@ -109,21 +109,42 @@ for f in /home/issues/*; do
 done
 ```
 
-## Reproducing the Case Study
+## Reproduce the Case Study (Section 6)
 
-To compile the Dotty Scala compiler with the global object initialization checker enabled, first
-start the sbt console as follows:
+To check Dotty, the Scala3 compiler, we need to first patch the compiler:
 ```
-cd /home/dotty && sbt
-```
-
-Then input into the SBT console:
-```
-compile
-scala3-compiler-bootstrapped/clean
-scala3-compiler-bootstrapped/compile
+cd /home/dotty && git apply /home/dotty.patch
 ```
 
-This is expected to produce 110 warnings. This includes the four types of initialization time irrelevance violations described in the paper, the violatation of partial ordering, and warnings relating to pattern matches that the checker skipped due to not yet supporting evaluation of them.
+Now run the following commands:
 
-The SBT shell can be exited with `Ctrl + D` and entered again with `cd /home/dotty && sbt`.
+```
+sbt scala3-compiler-bootstrapped/clean
+sbt scala3-compiler-bootstrapped/compile
+```
+
+The last command above is expected to produce 52 warnings.
+The warnings include:
+
+- The 4 problems of initialization-time irrelevance described in Section 6.1, and
+- One violation of partial ordering discussed in Section 6.2.
+
+**Note**: _The initialization-time irrelevance problem between two specific objects can expose as several warnings if there are violations in multiple places_.
+
+Due to code change in the Dotty repo and the improvement in implementation,
+the checker manages to find more violations of the two principles:
+
+- 2 more violations of initialization-time irrelevance: `NoSymbol` / `NoDenotation` and `NameKinds` / `AvoidNameKind`.
+
+- 2 more violations of partial ordering violation: `untpd` -> `Trees` -> `untpd` and
+  `Types` -> `Names` -> `Types`.
+
+## Implementation
+
+The implementation is located mainly in the following source files:
+
+```
+/home/dotty/compiler/library/src/scala/annotation/init.scala
+/home/dotty/compiler/src/dotty/tools/dotc/transform/init/Objects.scala
+/home/dotty/compiler/src/dotty/tools/dotc/transform/init/Cache.scala
+```
