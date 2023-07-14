@@ -10,7 +10,7 @@ mkdir -p "$log_dir"
 for snippet in ./code-snippets/*; do
   filename=${snippet##*/}
   log="$log_dir/${filename%.scala}.log"
-  /home/dotty/bin/scalac -d "$out_dir" -Ysafe-init-global -Wconf:"msg=(Cyclic\sinitialization)|(Reading\smutable\sstate\sof)|(Access\suninitialized\sfield):w" $snippet 2>&1 | tee "$log"
+  /home/dotty/bin/scalac -d "$out_dir" -Ysafe-init-global $snippet 2>&1 | tee "$log"
 done
 
 report="$CWD/report.csv"
