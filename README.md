@@ -3,7 +3,9 @@
 This document provides evaluation guidelines for **Paper #374: Initializing Global Objects: Time and Order**.
 
 The artifact includes an implementation of the global object initialization checking algorithm described in the paper, integrated into the Dotty Scala compiler. This document helps verify the following:
-- The initialization checker produces warnings for all code snippets the paper claims the algorithm should reject and no warnings for all code snippets the paper claims the algorithm should accept.
+
+- The code snippets in the paper are either rejected by the checker with warnings or pass the checker with no warnings as expected.
+- The Scala open issues mentioned in Appendix D is fixed.
 - The case study in section 6 can be reproduced.
 
 ## Getting Started
@@ -79,6 +81,28 @@ The script will print the results to console as a table and also place results i
 - **Status:** Will be `pass` if the Expected column matches the Actual column, and `fail` otherwise.
 
 The Status column is expected to be `pass` for all rows.
+
+## Verify Checker Fixes Open Scala Issues
+
+In Appendix D of the paper, we mentioned the following Scala issues:
+
++--------+---------------+------------------------------------------------+
+| #9312  | t9312.scala   | https://github.com/scala/bug/issues/9312       |
+| #9115  | t9115.scala   | https://github.com/scala/bug/issues/9115       |
+| #9261  | t9261.scala   | https://github.com/scala/bug/issues/9261       |
+| #5366  | t5366.scala   | https://github.com/scala/bug/issues/5366       |
+| #9360  | t9360.scala   | https://github.com/scala/bug/issues/9360       |
+| #16152 | i16152.scala  | https://github.com/lampepfl/dotty/issues/16152 |
+| #9176  | i9176.scala   | https://github.com/lampepfl/dotty/issues/9176  |
+| #11262 | i11262.scala  | https://github.com/lampepfl/dotty/issues/11262 |
++--------+---------------+------------------------------------------------+
+
+The test files can be found in the directory `/home/issues`. We expect all the test
+cases to be rejected by the checker. It can be verified by the following command:
+
+```
+cd /home/ && for f in issues/*; do echo "$f"; /home/dotty/bin/scalac -Ysafe-init-global -d /home/tmp "$f"; done
+```
 
 ## Reproducing the Case Study
 
