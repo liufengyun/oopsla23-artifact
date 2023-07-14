@@ -10,7 +10,7 @@ This document provides evaluation guidelines for **Paper #374: Initializing Glob
 The artifact includes an implementation of the global object initialization checking algorithm described in the paper, integrated into Dotty, the Scala 3 compiler. This document helps verify the following:
 
 - The code snippets in the paper are either rejected or accepted by the checker as expected.
-- The Scala open issues mentioned in Appendix D is fixed.
+- The Scala open issues mentioned in Appendix D are fixed.
 - The case study in Section 6 can be reproduced.
 
 ## Getting Started
@@ -136,14 +136,14 @@ The warnings include:
 - The 4 problems of initialization-time irrelevance described in Section 6.1, and
 - One violation of partial ordering discussed in Section 6.2.
 
-**Note**: _The initialization-time irrelevance problem between two specific objects can expose as several warnings if there are violations in multiple places_.
+**Note**: _The initialization-time irrelevance problem between two specific objects can expose itself as several warnings if there are violations in multiple places_.
 
 Due to code change in the Dotty repo and the improvement in implementation,
 the checker manages to find more violations of the two principles:
 
 - 2 more violations of initialization-time irrelevance: `NoSymbol` / `NoDenotation` and `NameKinds` / `AvoidNameKind`.
 
-- 2 more violations of partial ordering violation: `untpd` -> `Trees` -> `untpd` and
+- 2 more violations of partial ordering: `untpd` -> `Trees` -> `untpd` and
   `Types` -> `Names` -> `Types`.
 
 ## Implementation
