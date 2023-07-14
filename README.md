@@ -55,7 +55,7 @@ The reviewer is invited to play with other examples in the `/home/dotty/tests/in
 
 ## Verify Code Snippets in the Paper
 
-All code snippets from the paper are located in `/home/dotty/code-snippets`.
+All code snippets from the paper are located in `/home/dotty/snippets`.
 The file name of a snippet has the form `2.3-1-neg.scala`, which can be read as follows:
 
 - `2.3` means that the snippet comes from **Section 2.3** of the paper.
@@ -66,7 +66,7 @@ The suffix `pos` indicates that the snippet is expected to **pass** the checker 
 
 We can check a code snippet as follows:
 ```
-$ /home/dotty/bin/scalac -Ysafe-init-global -d /home/tmp /home/dotty/code-snippets/2.5-neg.scala
+$ /home/dotty/bin/scalac -Ysafe-init-global -d /home/tmp /home/dotty/snippets/2.5-neg.scala
 ```
 
 All snippets can be run automatically with the following command:
