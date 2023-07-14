@@ -141,7 +141,7 @@ the checker manages to find more violations of the two principles:
 
 ## Implementation
 
-The implementation is located mainly in the following source files:
+The implementation is integrated in Dotty, and is located mainly in the following source files:
 
 ```
 /home/dotty/compiler/library/src/scala/annotation/init.scala
