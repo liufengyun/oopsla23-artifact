@@ -14,3 +14,5 @@ RUN mv ./code-snippets ./dotty/code-snippets
 RUN mv ./test-all.sh ./dotty/test-all.sh
 
 RUN cd dotty && sbt compile
+
+RUN cd dotty && sbt scala3-compiler-bootstrapped/compile

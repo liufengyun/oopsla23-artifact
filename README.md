@@ -3,8 +3,7 @@
 This document provides evaluation guidelines for **Paper #374: Initializing Global Objects: Time and Order**.
 
 The artifact includes an implementation of the global object initialization checking algorithm described in the paper, integrated into the Dotty Scala compiler. This document helps verify the following:
-- The initialization checker produces warnings for all code snippets the paper claims the algorithm should reject.
-- The initialization checker produces no warnings for all code snippets the paper claims the algorithm should accept.
+- The initialization checker produces warnings for all code snippets the paper claims the algorithm should reject and no warnings for all code snippets the paper claims the algorithm should accept.
 - The case study in section 6 can be reproduced.
 
 ## Configuration
@@ -19,19 +18,6 @@ Once Docker is installed on the system:
 2. **Run the Docker image:** `docker run -it qata/oopsla23-artifact:latest`
 
 ## Play with Examples
-
-Start the sbt console as follows:
-```
-cd /home/dotty && sbt
-```
-
-Compile the compiler:
-```
-sbt> compile
-sbt> scala3-compiler-bootstrapped/compile
-```
-
-The SBT shell can be exited with `Ctrl + D` and entered again with `cd /home/dotty && sbt`.
 
 Test cases can be found in the directory `/home/dotty/tests/init-global`. Test cases in `/home/dotty/tests/init-global/pos` are expected to pass the checker with no warnings. Test cases in `/home/dotty/tests/init-global/neg` are expected to produce warnings when evaluated by the checker.
 
@@ -90,7 +76,13 @@ The Status column is expected to be `pass` for all rows.
 
 ## Reproducing the Case Study
 
-To compile the Dotty Scala compiler with the global object initialization checker enabled, input into the SBT console:
+To compile the Dotty Scala compiler with the global object initialization checker enabled, first
+start the sbt console as follows:
+```
+cd /home/dotty && sbt
+```
+
+Then input into the SBT console:
 ```
 compile
 scala3-compiler-bootstrapped/clean
@@ -98,3 +90,5 @@ scala3-compiler-bootstrapped/compile
 ```
 
 This is expected to produce 110 warnings. This includes the four types of initialization time irrelevance violations described in the paper, the violatation of partial ordering, and warnings relating to pattern matches that the checker skipped due to not yet supporting evaluation of them.
+
+The SBT shell can be exited with `Ctrl + D` and entered again with `cd /home/dotty && sbt`.
