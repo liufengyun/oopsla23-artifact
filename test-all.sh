@@ -7,7 +7,7 @@ out_dir="$CWD/tmp"
 mkdir -p "$out_dir"
 mkdir -p "$log_dir"
 
-for snippet in ./snippets/*; do
+for snippet in /home/snippets/*; do
   filename=${snippet##*/}
   log="$log_dir/${filename%.scala}.log"
   /home/dotty/bin/scalac -d "$out_dir" -Ysafe-init-global $snippet 2>&1 | tee "$log"
