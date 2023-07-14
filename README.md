@@ -69,13 +69,14 @@ We can check a code snippet as follows:
 $ /home/dotty/bin/scalac -Ysafe-init-global -d /home/tmp /home/dotty/snippets/2.5-neg.scala
 ```
 
-All snippets can be run automatically with the following command:
+We can check all snippets with the following command:
 ```
 $ /home/test-all.sh
 ```
 
-The script will check each file and print the results to console as a table.
+The script will check each file and finally print the results to console as a table.
 The meanings of each column are as follows:
+
 - **Snippet Name:** The name of the snippet.
 - **Expected:** Will be `warning` if the test should produce initialization warnings, and `no warning` if the test should pass the checker.
 - **Actual:** Will be `warning` if the checker produced warnings on this test, and `no warning` if the it did not.
