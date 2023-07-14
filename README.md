@@ -31,11 +31,13 @@ sbt> compile
 sbt> scala3-compiler-bootstrapped/compile
 ```
 
+The SBT shell can be exited with `Ctrl + D` and entered again with `cd /home/dotty && sbt`.
+
 Test cases can be found in the directory `/home/dotty/tests/init-global`. Test cases in `/home/dotty/tests/init-global/pos` are expected to pass the checker with no warnings. Test cases in `/home/dotty/tests/init-global/neg` are expected to produce warnings when evaluated by the checker.
 
-In order to run the global initialization checker on the test file `tests/init-global/neg/mutable-read7.scala`:
+In order to run the global initialization checker on the test file `/home/dotty/tests/init-global/neg/mutable-read7.scala`:
 ```
-sbt> scalac -Ysafe-init-global tests/init-global/neg/mutable-read7.scala
+$ /home/dotty/bin/scalac -Ysafe-init-global /home/dotty/tests/init-global/neg/mutable-read7.scala
 ```
 
 The compiler is expected to produce the following warning:
@@ -60,23 +62,21 @@ The compiler is expected to produce the following warning:
 
 The reviewer is invited to play with other examples in the `/home/dotty/tests/init-global` directory.
 
-The SBT shell can be exited with `Ctrl + D` and entered again with `cd /home/dotty && sbt`.
-
 ## Running Code Snippets
 
 All code snippets from the paper are located in `/home/dotty/code-snippets`. The file name of each snippet starts with the section the snippet is from and the number of the snippet in that section, delimited by a dot. For example, the fifth code snippet from section 2 has file name starting with `2.5`. The suffix of the file name is `-pos.scala` if the snippet is expected to not produce any warnings when evaluated by the checker. The suffix of the file name is `-neg.scala` if the checker should report warnings for that snippet. Code snippet files may differ slightly from what is presented in the paper due to small omissions for the sake of readability (e.g. imports and spacing).
 
-Running snippets is similar to running examples from the previous section. For example, to run the checker on snippet `2.5-neg.scala` while in the SBT shell:
+Running snippets is similar to running examples from the previous section. For example, to run the checker on snippet `2.5-neg.scala`:
 ```
-scalac -Ysafe-init-global code-snippets/2.5-neg.scala
-```
-
-To run the first snippet in Appendix D while in the SBT shell:
-```
-scalac -Ysafe-init-global code-snippets/d.1-pos.scala
+$ /home/dotty/bin/scalac -Ysafe-init-global /home/dotty/code-snippets/2.5-neg.scala
 ```
 
-All snippets can be run automatically as follows while in the `/home/dotty` directory:
+To run the first snippet in Appendix D:
+```
+$ /home/dotty/bin/scalac -Ysafe-init-global /home/dotty/code-snippets/d.1-pos.scala
+```
+
+All snippets can be run automatically with the following command while in the `/home/dotty` directory:
 ```
 $ ./test-all.sh
 ```
