@@ -2,9 +2,9 @@
 
 This document provides evaluation guidelines for **Paper #374: Initializing Global Objects: Time and Order**.
 
-The artifact includes an implementation of the global object initialization checking algorithm described in the paper, integrated into the Dotty Scala compiler. This document helps verify the following:
+The artifact includes an implementation of the global object initialization checking algorithm described in the paper, integrated into Dotty, the Scala 3 compiler. This document helps verify the following:
 
-- The code snippets in the paper are either rejected by the checker with warnings or pass the checker with no warnings as expected.
+- The code snippets in the paper are either rejected or accepted by the checker as expected.
 - The Scala open issues mentioned in Appendix D is fixed.
 - The case study in Section 6 can be reproduced.
 
@@ -23,7 +23,7 @@ Once Docker is installed on the system:
 
 Test cases can be found in the directory `/home/dotty/tests/init-global`:
 
-- Test cases in `tests/init-global/pos` are expected to pass the checker with no warnings.
+- Test cases in `tests/init-global/pos` are expected to pass the check with no warnings.
 - Test cases in `tests/init-global/neg` are expected to to be rejected by the checker with warnings.
 
 We can run the global initialization checker on a test file as follows:
@@ -62,7 +62,7 @@ The file name of a snippet has the form `2.3-1-neg.scala`, which can be read as 
 - `1` tells that it is the **1st** snippet in the corresponding section.
 - `neg` indicates that the snippet is expected to be **rejected** by the checker with warnings.
 
-The suffix `pos` indicates that the snippet is expected to **pass** the checker with no warnings.
+The suffix `pos` indicates that the snippet is expected to **pass** the check with no warnings.
 
 We can check a code snippet as follows:
 ```
@@ -78,7 +78,7 @@ The script will check each file and finally print the results to console as a ta
 The meanings of each column are as follows:
 
 - **Snippet Name:** The name of the snippet.
-- **Expected:** Will be `warning` if the test should produce initialization warnings, and `no warning` if the test should pass the checker.
+- **Expected:** Will be `warning` if the test should produce initialization warnings, and `no warning` if the test should pass the check.
 - **Actual:** Will be `warning` if the checker produced warnings on this test, and `no warning` if the it did not.
 - **Status:** Will be `pass` if the Expected column matches the Actual column, and `fail` otherwise.
 
