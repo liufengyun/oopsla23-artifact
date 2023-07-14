@@ -5,10 +5,6 @@ log_dir="$CWD/logs"
 
 mkdir -p "$log_dir"
 
-sbt "compile"
-sbt "scala3-compiler-bootstrapped/clean"
-sbt "scala3-compiler-bootstrapped/compile"
-
 for snippet in ./code-snippets/*; do
   filename=${snippet##*/}
   log="$log_dir/${filename%.scala}.log"
