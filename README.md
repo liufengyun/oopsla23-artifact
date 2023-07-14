@@ -86,7 +86,8 @@ The Status column is expected to be `pass` for all rows.
 
 In Appendix D of the paper, we mentioned the following Scala issues:
 
-+--------+---------------+------------------------------------------------+
+| No.    | File Name     | Link                                           |
+| ------ | ------------- | :--------------------------------------------: |
 | #9312  | t9312.scala   | https://github.com/scala/bug/issues/9312       |
 | #9115  | t9115.scala   | https://github.com/scala/bug/issues/9115       |
 | #9261  | t9261.scala   | https://github.com/scala/bug/issues/9261       |
@@ -95,13 +96,15 @@ In Appendix D of the paper, we mentioned the following Scala issues:
 | #16152 | i16152.scala  | https://github.com/lampepfl/dotty/issues/16152 |
 | #9176  | i9176.scala   | https://github.com/lampepfl/dotty/issues/9176  |
 | #11262 | i11262.scala  | https://github.com/lampepfl/dotty/issues/11262 |
-+--------+---------------+------------------------------------------------+
 
 The test files can be found in the directory `/home/issues`. We expect all the test
 cases to be rejected by the checker. It can be verified by the following command:
 
-```
-cd /home/ && for f in issues/*; do echo "$f"; /home/dotty/bin/scalac -Ysafe-init-global -d /home/tmp "$f"; done
+``` shell
+for f in /home/issues/*; do
+    echo "$f"
+    /home/dotty/bin/scalac -Ysafe-init-global -d /home/tmp "$f"
+done
 ```
 
 ## Reproducing the Case Study
