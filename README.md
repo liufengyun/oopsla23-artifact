@@ -1,3 +1,8 @@
+---
+title: "Paper #374: Initializing Global Objects: Time and Order"
+listings-disable-line-numbers: true
+---
+
 # OOPSLA 23 Artifact
 
 This document provides evaluation guidelines for **Paper #374: Initializing Global Objects: Time and Order**.
