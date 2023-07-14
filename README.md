@@ -28,7 +28,8 @@ Test cases can be found in the directory `/home/dotty/tests/init-global`:
 
 We can run the global initialization checker on a test file as follows:
 ```
-$ /home/dotty/bin/scalac -Ysafe-init-global -d /home/tmp /home/dotty/tests/init-global/neg/mutable-read7.scala
+cd /home/dotty
+bin/scalac -Ysafe-init-global -d /home/tmp tests/init-global/neg/mutable-read7.scala
 ```
 
 The compiler is expected to produce the following warning:
@@ -66,12 +67,12 @@ The suffix `pos` indicates that the snippet is expected to **pass** the check wi
 
 We can check a code snippet as follows:
 ```
-$ /home/dotty/bin/scalac -Ysafe-init-global -d /home/tmp /home/dotty/snippets/2.5-neg.scala
+/home/dotty/bin/scalac -Ysafe-init-global -d /home/tmp /home/dotty/snippets/2.5-neg.scala
 ```
 
 We can check all snippets with the following command:
 ```
-$ /home/test-all.sh
+/home/test-all.sh
 ```
 
 The script will check each file and finally print the results to console as a table.
