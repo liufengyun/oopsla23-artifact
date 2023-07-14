@@ -10,7 +10,7 @@ The artifact includes an implementation of the global object initialization chec
 
 ## Getting Started
 
-The artifact is a Docker image. The reviewer is invited to install Docker and make sure it is working normally. The following official guide can help with the installation of Docker: (https://docs.docker.com/get-docker/)[https://docs.docker.com/get-docker/].
+The artifact is a Docker image. The reviewer is invited to install Docker and make sure it is working normally. The following official guide can help with the installation of Docker: [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/).
 
 **Memory Requirement:** Normally the default configuration just works. In case there are memory problems, please set the memory quota for the VM to 4GB.
 
