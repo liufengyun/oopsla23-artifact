@@ -7,7 +7,7 @@ out_dir="$CWD/tmp"
 mkdir -p "$out_dir"
 mkdir -p "$log_dir"
 
-for snippet in ./code-snippets/*; do
+for snippet in ./snippets/*; do
   filename=${snippet##*/}
   log="$log_dir/${filename%.scala}.log"
   /home/dotty/bin/scalac -d "$out_dir" -Ysafe-init-global $snippet 2>&1 | tee "$log"
@@ -21,7 +21,7 @@ echo "Snippet Name,Expected,Actual,Status" >> "$report"
 for logfile in $log_dir/*; do
   filename=${logfile##*/}
   testname=${filename%.log}
-  if grep -q "Warning" $logfile; then
+  if grep -q -e "Cyclic initialization" -e "Reading mutable state of" -e "Access uninitialized field" $logfile; then
     # warning found
     if [[ $logfile == *"neg"* ]]; then
       # test passed
