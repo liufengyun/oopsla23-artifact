@@ -26,11 +26,6 @@ Once Docker is installed on the system:
 
 ### Play with Examples
 
-Test cases can be found in the directory `/home/dotty/tests/init-global`:
-
-- Test cases in `tests/init-global/pos` are expected to pass the check with no warnings.
-- Test cases in `tests/init-global/neg` are expected to to be rejected by the checker with warnings.
-
 We can run the global initialization checker on a test file as follows:
 ```
 cd /home/dotty
@@ -57,7 +52,12 @@ The compiler is expected to produce the following warning:
 1 warning found
 ```
 
-The reviewer is invited to play with other examples in the `/home/dotty/tests/init-global` directory.
+More test cases can be found in the directory `/home/dotty/tests/init-global`:
+
+- Tests in `tests/init-global/pos` are expected to pass the check with no warnings.
+- Tests in `tests/init-global/neg` are expected to be rejected by the checker with warnings.
+
+The reviewer is invited to play with other examples.
 
 ## Verify Code Snippets in the Paper
 
