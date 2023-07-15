@@ -73,7 +73,7 @@ The suffix `pos` indicates that the snippet is expected to **pass** the check wi
 We can check a code snippet as follows:
 ```
 cd /home/dotty
-/home/dotty/bin/scalac -Ysafe-init-global -d /home/tmp /home/snippets/2.5-neg.scala
+bin/scalac -Ysafe-init-global -d /home/tmp /home/snippets/2.3-1-neg.scala
 ```
 
 We can check all snippets with the following command:

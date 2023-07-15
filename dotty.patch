@@ -1,8 +1,8 @@
 diff --git a/project/Build.scala b/project/Build.scala
-index b94113f77b..c90b61af42 100644
+index 4680474d44..95ca6338f2 100644
 --- a/project/Build.scala
 +++ b/project/Build.scala
-@@ -193,7 +193,7 @@ object Build {
+@@ -196,7 +196,7 @@ object Build {
        "-deprecation",
        "-unchecked",
        //"-Wconf:cat=deprecation&msg=Unsafe:s",    // example usage
@@ -11,12 +11,13 @@ index b94113f77b..c90b61af42 100644
        "-encoding", "UTF8",
        "-language:implicitConversions",
      ),
-@@ -803,7 +803,7 @@ object Build {
-     },
- 
-     // Note: bench/profiles/projects.yml should be updated accordingly.
--    Compile / scalacOptions ++= Seq("-Yexplicit-nulls", "-Ysafe-init"),
-+    Compile / scalacOptions ++= Seq("-Yexplicit-nulls", "-Ysafe-init", "-Ysafe-init-global"),
- 
-     repl := (Compile / console).value,
-     Compile / console / scalacOptions := Nil, // reset so that we get stock REPL behaviour!  E.g. avoid -unchecked being enabled
+@@ -530,7 +530,7 @@ object Build {
+   // Settings shared between scala3-compiler and scala3-compiler-bootstrapped
+   lazy val commonDottyCompilerSettings = Seq(
+        // Note: bench/profiles/projects.yml should be updated accordingly.
+-       Compile / scalacOptions ++= Seq("-Yexplicit-nulls", "-Ysafe-init"),
++       Compile / scalacOptions ++= Seq("-Yexplicit-nulls", "-Ysafe-init", "-Ysafe-init-global"),
+
+       // Generate compiler.properties, used by sbt
+       (Compile / resourceGenerators) += Def.task {
+-- 

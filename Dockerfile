@@ -9,6 +9,6 @@ COPY . .
 
 RUN mkdir -p tmp
 
-RUN git clone -b oopsla23-patched --depth 10 https://github.com/q-ata/dotty.git
+RUN git clone -b oopsla23-artifact --depth 10 https://github.com/q-ata/dotty.git
 
 RUN cd dotty && sbt dist/pack
