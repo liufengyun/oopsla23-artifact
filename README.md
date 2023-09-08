@@ -10,7 +10,7 @@ This document provides evaluation guidelines for **Paper #374: Initializing Glob
 The artifact includes an implementation of the global object initialization checking algorithm described in the paper, integrated into Dotty, the Scala 3 compiler. This document helps verify the following:
 
 - The code snippets in the paper are either rejected or accepted by the checker as expected.
-- The Scala open issues mentioned in Appendix D are fixed.
+- The Scala open issues mentioned in Appendix C are fixed.
 - The case study in Section 6 can be reproduced.
 
 ## Getting Started
@@ -91,7 +91,7 @@ The meanings of each column are as follows:
 
 The Status column is expected to be `pass` for all rows.
 
-## Verify Checker Fixes Open Scala Issues (Appendix D)
+## Verify Checker Fixes Open Scala Issues (Appendix C)
 
 In Appendix D of the paper, we mentioned the following Scala issues:
 
@@ -151,7 +151,7 @@ the checker manages to find more violations of the two principles:
 The implementation is integrated in Dotty, and is located mainly in the following source files:
 
 ```
-/home/dotty/compiler/library/src/scala/annotation/init.scala
+/home/dotty/library/src/scala/annotation/init.scala
 /home/dotty/compiler/src/dotty/tools/dotc/transform/init/Objects.scala
 /home/dotty/compiler/src/dotty/tools/dotc/transform/init/Cache.scala
 ```
