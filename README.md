@@ -1,11 +1,11 @@
 ---
-title: "Paper #374: Initializing Global Objects: Time and Order"
+title: "Initializing Global Objects: Time and Order"
 listings-disable-line-numbers: true
 ---
 
 # OOPSLA 23 Artifact
 
-This document provides evaluation guidelines for **Paper #374: Initializing Global Objects: Time and Order**.
+This document provides evaluation guidelines for **Initializing Global Objects: Time and Order**.
 
 The artifact includes an implementation of the global object initialization checking algorithm described in the paper, integrated into Dotty, the Scala 3 compiler. This document helps verify the following:
 
@@ -18,12 +18,12 @@ The artifact includes an implementation of the global object initialization chec
 ### Play with Examples
 
 We can run the global initialization checker on a test file as follows:
-```
+``` bash
 cd ./dotty
 bin/scalac -Ysafe-init-global -d ./tmp tests/init-global/neg/mutable-read7.scala
 ```
 
-Note: _The first run of the command will be slow, as it will download dependencies and build the compiler_.
+Note: _The first run of the command will be slow, as it will download dependencies and build the compiler from the source code_.
 
 The compiler is expected to produce the following warning:
 ```
@@ -64,13 +64,13 @@ The file name of a snippet has the form `2.3-1-neg.scala`, which can be read as 
 The suffix `pos` indicates that the snippet is expected to **pass** the check with no warnings.
 
 We can check a code snippet as follows:
-```
+``` bash
 cd ./dotty
 bin/scalac -Ysafe-init-global -d ./tmp ./snippets/2.3-1-neg.scala
 ```
 
 We can check all snippets with the following command:
-```
+``` bash
 ./test-all.sh
 ```
 
@@ -102,7 +102,7 @@ In Appendix C of the paper, we mentioned the following Scala issues:
 The test files can be found in the directory `./issues`. We expect all the test
 cases to be rejected by the checker. It can be verified by the following command:
 
-``` shell
+``` bash
 for f in ./issues/*; do
     echo "$f"
     ./dotty/bin/scalac -Ysafe-init-global -d ./tmp "$f"
@@ -118,7 +118,7 @@ cd ./dotty && patch < ../dotty.patch
 
 Now run the following commands:
 
-```
+``` bash
 sbt scala3-compiler-bootstrapped/clean
 sbt scala3-compiler-bootstrapped/compile
 ```
