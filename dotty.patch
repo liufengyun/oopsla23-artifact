@@ -1,5 +1,5 @@
 diff --git a/project/Build.scala b/project/Build.scala
-index 4680474d44..95ca6338f2 100644
+index 4680474d..95ca6338 100644
 --- a/project/Build.scala
 +++ b/project/Build.scala
 @@ -196,7 +196,7 @@ object Build {
@@ -17,7 +17,6 @@ index 4680474d44..95ca6338f2 100644
         // Note: bench/profiles/projects.yml should be updated accordingly.
 -       Compile / scalacOptions ++= Seq("-Yexplicit-nulls", "-Ysafe-init"),
 +       Compile / scalacOptions ++= Seq("-Yexplicit-nulls", "-Ysafe-init", "-Ysafe-init-global"),
-
+ 
        // Generate compiler.properties, used by sbt
        (Compile / resourceGenerators) += Def.task {
--- 

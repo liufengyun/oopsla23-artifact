@@ -15,22 +15,15 @@ The artifact includes an implementation of the global object initialization chec
 
 ## Getting Started
 
-The artifact is a Docker image. The reviewer is invited to install Docker and make sure it is working normally. The following official guide can help with the installation of Docker: [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/).
-
-**Memory Requirement:** Normally the default configuration just works. In case there are memory problems, please set the memory quota for the VM to 4GB.
-
-Once Docker is installed on the system:
-
-1. **Download the Docker image:** `docker pull qata/oopsla23-artifact:latest`
-2. **Run the Docker image:** `docker run -it qata/oopsla23-artifact:latest`
-
 ### Play with Examples
 
 We can run the global initialization checker on a test file as follows:
 ```
-cd /home/dotty
-bin/scalac -Ysafe-init-global -d /home/tmp tests/init-global/neg/mutable-read7.scala
+cd ./dotty
+bin/scalac -Ysafe-init-global -d ./tmp tests/init-global/neg/mutable-read7.scala
 ```
+
+Note: _The first run of the command will be slow, as it will download dependencies and build the compiler_.
 
 The compiler is expected to produce the following warning:
 ```
@@ -52,7 +45,7 @@ The compiler is expected to produce the following warning:
 1 warning found
 ```
 
-More test cases can be found in the directory `/home/dotty/tests/init-global`:
+More test cases can be found in the directory `./dotty/tests/init-global`:
 
 - Tests in `tests/init-global/pos` are expected to pass the check with no warnings.
 - Tests in `tests/init-global/neg` are expected to be rejected by the checker with warnings.
@@ -61,7 +54,7 @@ The reviewer is invited to play with other examples.
 
 ## Verify Code Snippets in the Paper
 
-All code snippets from the paper are located in `/home/snippets`.
+All code snippets from the paper are located in `./snippets`.
 The file name of a snippet has the form `2.3-1-neg.scala`, which can be read as follows:
 
 - `2.3` means that the snippet comes from **Section 2.3** of the paper.
@@ -72,13 +65,13 @@ The suffix `pos` indicates that the snippet is expected to **pass** the check wi
 
 We can check a code snippet as follows:
 ```
-cd /home/dotty
-bin/scalac -Ysafe-init-global -d /home/tmp /home/snippets/2.3-1-neg.scala
+cd ./dotty
+bin/scalac -Ysafe-init-global -d ./tmp ./snippets/2.3-1-neg.scala
 ```
 
 We can check all snippets with the following command:
 ```
-/home/test-all.sh
+./test-all.sh
 ```
 
 The script will check each file and finally print the results to console as a table.
@@ -106,13 +99,13 @@ In Appendix C of the paper, we mentioned the following Scala issues:
 | #9176  | i9176.scala   | https://github.com/lampepfl/dotty/issues/9176  |
 | #11262 | i11262.scala  | https://github.com/lampepfl/dotty/issues/11262 |
 
-The test files can be found in the directory `/home/issues`. We expect all the test
+The test files can be found in the directory `./issues`. We expect all the test
 cases to be rejected by the checker. It can be verified by the following command:
 
 ``` shell
-for f in /home/issues/*; do
+for f in ./issues/*; do
     echo "$f"
-    /home/dotty/bin/scalac -Ysafe-init-global -d /home/tmp "$f"
+    ./dotty/bin/scalac -Ysafe-init-global -d ./tmp "$f"
 done
 ```
 
@@ -120,7 +113,7 @@ done
 
 To check Dotty, the Scala3 compiler, we need to first patch the compiler:
 ```
-cd /home/dotty && git apply /home/dotty.patch
+cd ./dotty && patch < ../dotty.patch
 ```
 
 Now run the following commands:
@@ -151,7 +144,7 @@ the checker manages to find more violations of the two principles:
 The implementation is integrated in Dotty, and is located mainly in the following source files:
 
 ```
-/home/dotty/library/src/scala/annotation/init.scala
-/home/dotty/compiler/src/dotty/tools/dotc/transform/init/Objects.scala
-/home/dotty/compiler/src/dotty/tools/dotc/transform/init/Cache.scala
+./dotty/library/src/scala/annotation/init.scala
+./dotty/compiler/src/dotty/tools/dotc/transform/init/Objects.scala
+./dotty/compiler/src/dotty/tools/dotc/transform/init/Cache.scala
 ```
