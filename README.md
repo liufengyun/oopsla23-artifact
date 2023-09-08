@@ -93,7 +93,7 @@ The Status column is expected to be `pass` for all rows.
 
 ## Verify Checker Fixes Open Scala Issues (Appendix C)
 
-In Appendix D of the paper, we mentioned the following Scala issues:
+In Appendix C of the paper, we mentioned the following Scala issues:
 
 | No.    | File Name     | Link                                           |
 | ------ | ------------- | :--------------------------------------------: |
