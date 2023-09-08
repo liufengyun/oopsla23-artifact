@@ -113,7 +113,7 @@ done
 
 To check Dotty, the Scala3 compiler, we need to first patch the compiler:
 ```
-cd ./dotty && patch < ../dotty.patch
+cd ./dotty && patch -p1 < ../dotty.patch
 ```
 
 Now run the following commands:
